@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mark B. Macaraan | Web Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fffef2 0%, #f0f8ff 50%, #e8f5e8 100%);
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23ffcc00" opacity="0.05"/></svg>') repeat;
+      z-index: -1;
+      animation: subtleTwinkle 15s ease-in-out infinite;
+    }
+
+    @keyframes subtleTwinkle {
+      0%, 100% { opacity: 0.05; }
+      50% { opacity: 0.1; }
+    }
+
+    /* Navbar */
+    header {
+      background: linear-gradient(135deg, #ffcc00 0%, #ffb300 100%);
+      color: #222;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.8rem;
+      background: linear-gradient(45deg, #222, #444);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: #222;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      transform: scale(0);
+      transition: transform 0.3s ease;
+    }
+
+    .nav-links a:hover::before,
+    .nav-links a.active::before {
+      transform: scale(1);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+      font-weight: 600;
+      transform: translateY(-2px);
+    }
+
+    /* Section Layout */
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 2rem auto;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Home Section */
+    .home {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fff9c4 0%, #ffeb3b 50%, #ffb300 100%);
+      border-radius: 25px;
+      padding: 4rem 2rem;
+      text-align: center;
+      gap: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .home::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      animation: gentleFloat 8s ease-in-out infinite;
+    }
+
+    @keyframes gentleFloat {
+      0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+      50% { transform: translate(-50%, -50%) rotate(180deg); }
+    }
+
+    .home img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid #fff;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 1;
+    }
+
+    .home img:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .home-text {
+      max-width: 550px;
+      z-index: 1;
+    }
+
+    .home h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #222;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #333;
+      margin: 0.5rem 0 1.5rem;
+      background: linear-gradient(45deg, #ffcc00, #ffb300);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .intro {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    /* Section Headings */
+    .section h2 {
+      color: #ffcc00;
+      border-bottom: 4px solid #ffcc00;
+      display: inline-block;
+      padding-bottom: 8px;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Skills */
+    #skills ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    #skills li {
+      background: linear-gradient(135deg, #fff9c4, #ffeb3b);
+      padding: 1.5rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    #skills li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    #skills li::before {
+      content: '💻';
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Education */
+    #education img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      vertical-align: middle;
+      margin-right: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    #education img:hover {
+      transform: scale(1.1);
+    }
+
+    #education h3 {
+      margin-top: 2rem;
+      color: #ffcc00;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    #education ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    #education ul li {
+      padding: 0.5rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    #education ul li::before {
+      content: '🏆';
+      position: absolute;
+      left: 0;
+      font-size: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #ffcc00 0%, #ffb300 100%);
+      color: #222;
+      text-align: center;
+      padding: 3rem 1rem;
+      margin-top: 3rem;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px 20px 0 0;
+    }
+
+    footer h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer a {
+      color: #222;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .home {
+        flex-direction: column;
+      }
+
+      #skills ul {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">Web Portfolio</h1>
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#hobbies">Hobbies</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Section -->
+  <main>
+    <section id="home" class="section home">
+      <img src="PROFILE.jpg" alt="Description">
+      <div class="home-text">
+        <h2>MARK B. MACARAAN</h2>
+        <p class="title">Professional IT</p>
+        <p class="intro">
+          I’m Mark, an aspiring Information Technology professional with a strong passion for web development, cybersecurity, and system configuration. My goal is to combine creativity and technical expertise to build secure, efficient, and user-friendly digital solutions.<br><br>
+          This portfolio serves as a reflection of my journey in the IT field—showcasing my skills, projects, and continuous growth as I pursue excellence in technology. I’m always eager to learn new tools, explore innovative ideas, and contribute to meaningful projects that make technology more accessible and impactful.
+        </p>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About Me</h2>
+      <p><strong>Age:</strong> 18</p>
+      <p><strong>Gender:</strong> Male</p>
+      <p><strong>Height:</strong> 5'8"</p>
+      <p><strong>Weight:</strong> 40kg</p>
+      <p><strong>Professional Summary:</strong> Dedicated and skilled IT student with strong problem-solving and technical abilities in computer systems and web solutions.</p>
+    </section>
+
+    <section id="skills" class="section">
+      <h2>Preferred Skills</h2>
+      <ul>
+        <li>Web Development</li>
+        <li>Cyber Security</li>
+        <li>Computer Configuration</li>
+      </ul>
+    </section>
+
+    <section id="education" class="section">
+      <h2>Education</h2>
+      <p><strong>Elementary:</strong> <img src="quezon.webp" alt="Manuel Luis Quezon Logo"> Manuel Luis Quezon</p>
+      <p><strong>Junior High School:</strong> <img src="lutucan.jpg" alt="Lutucan National High School"> Lutucan Integrated National High School</p>
+      <p><strong>Senior High School:</strong> <img src="CSTC.jpg" alt="CSTC SHS"> College Of Sciences Communication Technology</p>
+      <p><strong>College:</strong> <img src="CSTC.jpg" alt="CSTC COLLEGE"> College Of Sciences Communication Technology</p>
+      <h3>Achievements</h3>
+      <ul>
+        <li>Top 15 - SHS ICT OVERALL</li>
+        <li>G11 Top 10</li>
+        <li>2nd Runner up Quizbee SHS</li>
+        <li>G11 Secretary</li>
+        <li>G12 PIO</li>
+      </ul>
+    </section>
+
+    <section id="hobbies" class="section">
+      <h2>Hobbies & Inspiration</h2>
+      <p>I enjoy coding (sometimes), playing online games, photography, and exploring new technologies. I also love playing badminton with my cousin, playing volleyball, and most of all, dancing. I’m inspired by innovation and by people who have the passion and determination to turn their ideas into reality.</p>
+    </section>
+
+    <section id="work" class="section">
+      <h2>Work Experience</h2>
+      <p><strong>Freelance Technician:</strong> Computer hardware/software troubleshooting.</p>
+      <p><strong>Part-Time in Municipality of Lucena (Legal Office):</strong> Encoder and PA of atty. Ruby Leonen.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <h3>Contact Me</h3>
+    <p><strong>Phone:</strong> +63 945 4292 619</p>
+    <p><strong>Email:</strong> markmacaraan9@gmail.com</p>
+    <p><strong>Facebook:</strong> <a href="https://www.facebook.com/share/1DTHoi4ysv/" target="_blank">fb.com/markmacaraan</a></p>
+    <p>© 2025 Mark B. Macaraan. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-links a");
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 60;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
